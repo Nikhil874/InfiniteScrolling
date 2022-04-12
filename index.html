@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="container"></div>
+    <!-- <h1>Yes</h1> -->
+</body>
+</html>
+
+<script>
+    //1.load 25 elements on dom.
+    var count=1;
+    let i=0;
+    function loadData(i){
+       
+        const container=document.querySelector(".container");
+        while(i<=count*25){
+            
+            let h1=document.createElement("h1");
+            h1.textContent=`Masai Student${i}`;
+            container.append(h1);
+            i++
+
+        }
+        count++;
+    }
+    loadData(i);
+    //2.on scroll end append another 25.
+   window.addEventListener("scroll",()=>{
+    console.log("window.scrollY"+window.scrollY,"window.innerHeight",window.innerHeight,"document.documentElement.scrollHeight",document.documentElement.scrollHeight)
+       if(Math.ceil(window.scrollY) + window.innerHeight >= document.documentElement.scrollHeight){
+        
+           loadData(((count-1)*25));
+       }
+   })
+</script>
